@@ -5,7 +5,7 @@ import { ServiceIcon, ChevronRightIcon } from './icons'
 
 export function ServicesGrid() {
   return (
-    <section className="py-20 lg:py-28 bg-gray-50">
+    <section className="py-20 lg:py-28 bg-neu-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Cuidamos tu ropa"
@@ -17,10 +17,10 @@ export function ServicesGrid() {
             <Link
               key={service.slug}
               href={`/servicios#${service.slug}`}
-              className="group bg-white rounded-xl p-8 shadow-card hover:shadow-elevated transition-all duration-300 border border-gray-100 hover:border-cyan-200"
+              className="group bg-neu-bg rounded-2xl p-8 shadow-neu hover:shadow-neu-inset transition-shadow duration-300 border border-transparent"
             >
-              <div className="w-12 h-12 bg-cyan-50 group-hover:bg-cyan-100 rounded-lg flex items-center justify-center mb-5 transition-colors">
-                <ServiceIcon icon={service.icon} className="w-6 h-6 text-cyan-600" />
+              <div className="w-14 h-14 bg-neu-bg shadow-neu-inset rounded-xl flex items-center justify-center mb-6">
+                <ServiceIcon icon={service.icon} className="w-7 h-7 text-cyan-600" />
               </div>
               <h3 className="font-heading text-display-xs text-gray-900 mb-3">{service.title}</h3>
               <p className="text-body-sm text-foreground-secondary leading-relaxed mb-4">

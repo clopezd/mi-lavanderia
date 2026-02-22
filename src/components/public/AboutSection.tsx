@@ -6,16 +6,16 @@ export function AboutSection() {
   const initials = founderName.split(' ').map(n => n[0]).join('')
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-20 lg:py-28 bg-neu-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image / Placeholder */}
           <div className="relative">
-            <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center overflow-hidden shadow-elevated">
-              <span className="text-8xl font-heading font-bold text-white/30">{initials}</span>
+            <div className="aspect-[4/5] rounded-3xl bg-neu-bg flex items-center justify-center overflow-hidden shadow-neu-inset border border-transparent">
+              <span className="text-8xl font-heading font-bold text-cyan-500/30">{initials}</span>
             </div>
             {/* Experience badge */}
-            <div className="absolute -bottom-5 -right-5 md:bottom-8 md:-right-6 bg-white rounded-2xl shadow-elevated p-5 border border-gray-100">
+            <div className="absolute -bottom-5 -right-5 md:bottom-8 md:-right-6 bg-neu-bg rounded-2xl shadow-neu p-5 border border-transparent">
               <span className="block font-heading text-display-md text-cyan-600 font-bold">{yearsExperience}+</span>
               <span className="text-body-sm text-foreground-secondary">Años</span>
             </div>
@@ -34,9 +34,9 @@ export function AboutSection() {
             </p>
 
             {/* Founder card */}
-            <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center shrink-0">
-                <span className="text-lg font-bold text-white">{initials}</span>
+            <div className="flex items-center gap-4 p-4 bg-neu-bg shadow-neu-inset rounded-2xl">
+              <div className="w-14 h-14 rounded-xl bg-neu-bg shadow-neu flex items-center justify-center shrink-0">
+                <span className="text-lg font-bold text-cyan-600">{initials}</span>
               </div>
               <div>
                 <p className="font-heading font-semibold text-gray-900">{founderName}</p>

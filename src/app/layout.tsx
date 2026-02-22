@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className="bg-neu-bg text-gray-800 antialiased min-h-screen">
+        {children}
+      </body>
     </html>
   )
 }

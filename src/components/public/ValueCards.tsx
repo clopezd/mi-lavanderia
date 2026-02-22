@@ -9,14 +9,14 @@ export function ValueCards() {
           {siteConfig.values.map((value, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-elevated p-8 flex items-start gap-4 hover:shadow-modal transition-shadow duration-300 border border-gray-50"
+              className="bg-neu-bg rounded-2xl shadow-neu p-8 flex items-start gap-4 hover:shadow-neu-inset transition-shadow duration-300 border border-transparent"
             >
-              <div className="shrink-0 w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center">
+              <div className="shrink-0 w-14 h-14 bg-neu-bg shadow-neu-inset rounded-xl flex items-center justify-center">
                 <ValueIcon icon={value.icon} className="w-7 h-7 text-cyan-600" />
               </div>
               <div>
                 <p className="text-body-xs text-cyan-600 font-semibold uppercase tracking-wider mb-1">
-                  {value.icon === 'respect' ? 'Respeto y dignidad' : value.icon === 'quality' ? 'Cada caso es único' : 'Equipo experimentado'}
+                  {value.icon === 'respect' ? 'Cuidado Puntual' : value.icon === 'quality' ? 'Máxima Calidad' : 'Experiencia Comprobada'}
                 </p>
                 <h3 className="font-heading text-display-xs text-gray-900 mb-2">{value.title}</h3>
                 <p className="text-body-sm text-foreground-secondary leading-relaxed">{value.description}</p>

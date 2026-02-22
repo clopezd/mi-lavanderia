@@ -30,7 +30,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-elevated' : 'shadow-card'}`}>
+      <nav className={`sticky top-0 z-50 bg-neu-bg transition-shadow duration-300 ${scrolled ? 'shadow-neu' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -61,12 +61,12 @@ export function Navbar() {
                         <ChevronDownIcon className={`w-4 h-4 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
                       </button>
                       {openDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-elevated border border-gray-100 py-2 animate-fade-in">
+                        <div className="absolute top-full left-0 mt-2 w-56 bg-neu-bg rounded-xl shadow-neu border border-transparent py-2 animate-fade-in">
                           {item.children.map((child) => (
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="block px-4 py-2.5 text-body-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition-colors"
+                              className="block px-4 py-2.5 text-body-sm text-gray-700 hover:text-cyan-600 transition-colors"
                               onClick={() => setOpenDropdown(null)}
                             >
                               {child.label}
@@ -87,7 +87,7 @@ export function Navbar() {
               ))}
               <Link
                 href="/login"
-                className="ml-4 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white text-body-sm font-semibold rounded-lg transition-colors"
+                className="ml-4 px-6 py-2.5 bg-neu-bg text-cyan-600 font-semibold rounded-xl shadow-neu hover:shadow-neu-inset active:shadow-neu-inset transition-shadow duration-200"
               >
                 Portal Administrador
               </Link>

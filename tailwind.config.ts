@@ -7,6 +7,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        neu: {
+          bg: '#e6eff5',
+          dark: '#b8c5cc',
+          light: '#ffffff',
+        },
         primary: {
           50: '#E8EEF5',
           100: '#D1DDEB',
@@ -58,6 +63,19 @@ const config: Config = {
           800: '#115E59',
           900: '#134E4A',
           950: '#042F2E',
+        },
+        cyan: {
+          50: '#ECFEFF',
+          100: '#CFFAFE',
+          200: '#A5F3FC',
+          300: '#67E8F9',
+          400: '#22D3EE',
+          500: '#06B6D4',
+          600: '#0891B2',
+          700: '#0E7490',
+          800: '#155E75',
+          900: '#164E63',
+          950: '#083344',
         },
         background: '#FAFBFC',
         surface: '#FFFFFF',
@@ -119,6 +137,14 @@ const config: Config = {
         'card-hover': '0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05)',
         'elevated': '0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04)',
         'modal': '0 25px 50px -12px rgb(0 0 0 / 0.15)',
+        'neu-sm': '3px 3px 6px #b8c5cc, -3px -3px 6px #ffffff',
+        'neu': '6px 6px 12px #b8c5cc, -6px -6px 12px #ffffff',
+        'neu-md': '8px 8px 16px #b8c5cc, -8px -8px 16px #ffffff',
+        'neu-lg': '12px 12px 24px #b8c5cc, -12px -12px 24px #ffffff',
+        'neu-xl': '20px 20px 40px #b8c5cc, -20px -20px 40px #ffffff',
+        'neu-inset-sm': 'inset 2px 2px 4px #b8c5cc, inset -2px -2px 4px #ffffff',
+        'neu-inset': 'inset 4px 4px 8px #b8c5cc, inset -4px -4px 8px #ffffff',
+        'neu-inset-md': 'inset 6px 6px 12px #b8c5cc, inset -6px -6px 12px #ffffff',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out',
