@@ -18,15 +18,15 @@ export function TestimonialsCarousel() {
   }
 
   return (
-    <section className="py-20 lg:py-28 bg-teal-900 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-cyan-900 relative overflow-hidden">
       {/* Decorative */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-teal-800/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-teal-800/30 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-800/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-800/30 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Testimonios"
-          title="&iexcl;Lo que dicen nuestros clientes!"
+          title="&iexcl;Lo que dicen de nuestro servicio!"
           subtitle="La satisfacción de nuestros clientes es nuestra mayor recompensa."
           light
         />
@@ -77,8 +77,8 @@ export function TestimonialsCarousel() {
 
               {/* Author */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center">
-                  <span className="text-body-sm font-bold text-teal-700">
+                <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
+                  <span className="text-body-sm font-bold text-cyan-700">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>

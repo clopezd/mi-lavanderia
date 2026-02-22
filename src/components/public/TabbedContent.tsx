@@ -25,13 +25,13 @@ export function TabbedContent() {
                 onClick={() => setActiveTab(index)}
                 className={`flex-1 py-4 px-6 text-body-md font-semibold text-center transition-colors relative ${
                   activeTab === index
-                    ? 'text-teal-600'
+                    ? 'text-cyan-600'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
                 {tab.title}
                 {activeTab === index && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-600" />
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-600" />
                 )}
               </button>
             ))}
@@ -56,7 +56,7 @@ export function TabbedContent() {
                 <button
                   onClick={() => setActiveTab(activeTab === index ? -1 : index)}
                   className={`w-full py-4 px-5 text-left font-semibold text-body-md flex items-center justify-between transition-colors ${
-                    activeTab === index ? 'bg-teal-50 text-teal-700' : 'bg-white text-gray-700'
+                    activeTab === index ? 'bg-cyan-50 text-cyan-700' : 'bg-white text-gray-700'
                   }`}
                 >
                   {tab.title}

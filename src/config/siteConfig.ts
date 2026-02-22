@@ -1,11 +1,5 @@
 // ============================================================
-// SITE CONFIG - Template Reutilizable para Bufetes de Abogados
-// ============================================================
-// Para personalizar para un nuevo cliente:
-// 1. Cambiar firmName, founderName, contact, services, team, testimonials
-// 2. Agregar URLs de imágenes reales en los campos imageUrl
-// 3. Ajustar theme.primaryColor si se desea otro color
-// 4. Deploy
+// SITE CONFIG - Lavandería Carlos Mario
 // ============================================================
 
 export interface ServiceItem {
@@ -122,211 +116,208 @@ export interface SiteConfig {
 }
 
 // ============================================================
-// CONFIGURACIÓN: Irene González - Bufete en Managua, Nicaragua
+// CONFIGURACIÓN: Lavandería Carlos Mario
 // ============================================================
 
 export const siteConfig: SiteConfig = {
-  firmName: 'González & Asociados',
-  firmSlogan: 'Nos centramos en las necesidades de su familia',
-  firmDescription: 'Bufete de abogados especializado en derecho de familia en Managua, Nicaragua. Representación legal compasiva y efectiva para proteger lo que más importa.',
-  founderName: 'Irene González',
-  founderTitle: 'Abogada Principal y Fundadora',
-  founderBio: 'Con más de 9 años de experiencia en derecho de familia, la Licda. Irene González ha dedicado su carrera a proteger los derechos e intereses de las familias nicaragüenses. Su enfoque combina un profundo conocimiento legal con una genuina empatía hacia cada cliente, asegurando que cada caso reciba la atención personalizada que merece. Fundadora de González & Asociados, lidera un equipo comprometido con brindar soluciones legales integrales que priorizan el bienestar de la familia.',
-  yearsExperience: 9,
-  yearFounded: 2017,
+  firmName: 'Lavandería Carlos Mario',
+  firmSlogan: 'Tu ropa impecable, siempre fresca',
+  firmDescription: 'Servicio profesional de lavandería, planchado y entrega a domicilio. Cuidamos tus prendas con los mejores productos para garantizar limpieza y frescura.',
+  founderName: 'Carlos Mario',
+  founderTitle: 'Fundador y Gerente',
+  founderBio: 'Con más de 10 años de experiencia en el cuidado textil, Carlos Mario fundó esta lavandería con un objetivo claro: ofrecer un servicio de alta calidad que devuelva el tiempo libre a las personas. Su pasión por el detalle y la atención al cliente ha convertido a la Lavandería Carlos Mario en la opción preferida de la comunidad.',
+  yearsExperience: 10,
+  yearFounded: 2014,
 
   contact: {
-    phone: '+50522781234',
-    phoneDisplay: '+505 2278-1234',
-    email: 'contacto@gonzalezabogados.com.ni',
-    address: 'Rotonda El Güegüense, 2 cuadras al sur, Edificio Plaza Sur, Oficina 305',
+    phone: '+50588880000',
+    phoneDisplay: '+505 8888-0000',
+    email: 'contacto@lavanderiacarlosmario.com',
+    address: 'Del parque central 2 cuadras al norte',
     city: 'Managua',
     country: 'Nicaragua',
     googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.5!2d-86.27!3d12.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzQ4LjAiTiA4NsKwMTYnMTIuMCJX!5e0!3m2!1ses!2sni!4v1700000000000',
-    whatsappNumber: '+50588881234',
-    officeHours: 'Lunes a Viernes, 8:00 a.m. a 5:00 p.m.',
+    whatsappNumber: '+50588880000',
+    officeHours: 'Lunes a Sábado, 8:00 a.m. a 6:00 p.m.',
   },
 
   social: {
-    facebook: 'https://facebook.com/gonzalezabogadosni',
-    instagram: 'https://instagram.com/gonzalezabogadosni',
-    linkedin: 'https://linkedin.com/company/gonzalezabogadosni',
+    facebook: 'https://facebook.com/lavanderiacarlosmario',
+    instagram: 'https://instagram.com/lavanderiacarlosmario',
   },
 
   navigation: {
     items: [
       { label: 'Inicio', href: '/' },
       {
-        label: 'Derecho de Familia',
+        label: 'Servicios',
         href: '/servicios',
         children: [
-          { label: 'Divorcio', href: '/servicios#divorcio' },
-          { label: 'Custodia de Menores', href: '/servicios#custodia' },
-          { label: 'Pensión Alimenticia', href: '/servicios#pension' },
-          { label: 'Mediación Familiar', href: '/servicios#mediacion' },
-          { label: 'Violencia Doméstica', href: '/servicios#violencia' },
-          { label: 'Separación Legal', href: '/servicios#separacion' },
+          { label: 'Lavado por Libra', href: '/servicios#lavado-libra' },
+          { label: 'Planchado Profesional', href: '/servicios#planchado' },
+          { label: 'Lavado en Seco', href: '/servicios#lavado-seco' },
+          { label: 'Entrega a Domicilio', href: '/servicios#domicilio' },
         ],
       },
-      { label: 'Equipo Legal', href: '/equipo' },
-      { label: 'Nuestro Enfoque', href: '/#enfoque' },
+      { label: 'Nuestro Equipo', href: '/equipo' },
+      { label: 'Por Qué Elegirnos', href: '/#enfoque' },
       { label: 'Contacto', href: '/contacto' },
     ],
   },
 
   hero: {
-    headline: 'Nos centramos en las necesidades de su familia',
-    subheadline: 'Representación legal compasiva y efectiva en Managua, Nicaragua. Protegemos lo que más importa para usted y los suyos.',
-    ctaText: 'Agendar Consulta',
+    headline: 'Tu ropa impecable y fresca, sin salir de casa',
+    subheadline: 'Servicio profesional de lavandería, planchado y entrega a domicilio. Confía tus prendas a los expertos y disfruta de tu tiempo libre.',
+    ctaText: 'Solicitar Recolección',
     ctaHref: '/contacto',
   },
 
   values: [
     {
-      icon: 'respect',
-      title: 'Respeto y Dignidad',
-      description: 'Nuestros clientes son como una familia. Tratamos cada caso con la dignidad y el respeto que merece.',
-    },
-    {
       icon: 'quality',
-      title: 'Representación Legal del Más Alto Nivel',
-      description: 'Cada caso recibe dedicación completa. Nos mantenemos a la vanguardia del derecho de familia en Nicaragua.',
+      title: 'Máxima Calidad',
+      description: 'Utilizamos productos premium que cuidan las fibras de tu ropa, manteniéndola como nueva por más tiempo.',
     },
     {
-      icon: 'team',
-      title: 'Abogados Dedicados y Experimentados',
-      description: 'Un equipo experimentado comprometido con alcanzar los mejores resultados para cada cliente.',
+      icon: 'respect',
+      title: 'Cuidado Puntual',
+      description: 'Respetamos tu tiempo. Nuestro servicio de entrega a domicilio funciona con puntualidad suiza.',
+    },
+    {
+      icon: 'experience',
+      title: 'Experiencia Comprobada',
+      description: 'Más de una década tratando todo tipo de telas y manchas difíciles nos respalda.',
     },
   ],
 
   services: [
     {
-      icon: 'separation',
-      title: 'Separación Legal',
-      slug: 'separacion',
-      shortDescription: 'Los acuerdos de separación son una alternativa mutuamente aceptable y duradera para resolver conflictos de pareja.',
-      fullDescription: 'La separación legal ofrece una alternativa menos adversarial al divorcio, permitiendo a las parejas establecer acuerdos formales sobre custodia, pensión y distribución de bienes mientras evalúan el futuro de su relación. Nuestro equipo facilita este proceso con sensibilidad y profesionalismo, asegurando que los derechos de ambas partes sean protegidos.',
+      icon: 'custom',
+      title: 'Lavado por Libra',
+      slug: 'lavado-libra',
+      shortDescription: 'Ideal para tu ropa del día a día. Lavado, secado y doblado profesional.',
+      fullDescription: 'Nuestro servicio de lavado por libra es perfecto para la ropa de uso diario. Clasificamos tus prendas por colores y tipo de tela, utilizamos detergentes de alta eficacia y suavizantes que dejan un aroma fresco y duradero. Te entregamos tu ropa perfectamente doblada y lista para guardar.',
     },
     {
-      icon: 'divorce',
-      title: 'Divorcio',
-      slug: 'divorcio',
-      shortDescription: 'Un divorcio es uno de los aspectos más prácticos del proceso. Podemos ayudarle a navegar cada etapa.',
-      fullDescription: 'Entendemos que el divorcio es un momento difícil. Por eso, nos enfocamos en hacer el proceso lo más claro y eficiente posible. Manejamos todos los aspectos legales incluyendo la división de bienes, acuerdos de custodia, pensión alimenticia y modificaciones post-divorcio. Nuestro objetivo es proteger sus intereses mientras minimizamos el impacto emocional y financiero.',
+      icon: 'custom',
+      title: 'Planchado Profesional',
+      slug: 'planchado',
+      shortDescription: 'Tus camisas y pantalones impecables, sin una sola arruga.',
+      fullDescription: 'Devolvemos a tus prendas su aspecto original. Nuestro equipo utiliza equipos de planchado industrial y técnicas específicas para cada tipo de tela, garantizando que tus camisas, pantalones y trajes luzcan perfectos para cualquier ocasión.',
     },
     {
-      icon: 'custody',
-      title: 'Custodia y Manutención de Menores',
-      slug: 'custodia',
-      shortDescription: 'Los intereses de los niños son siempre la máxima prioridad. Podemos ayudarle a proteger el papel que usted desempeña en sus vidas.',
-      fullDescription: 'La custodia de los hijos es uno de los temas más sensibles en el derecho de familia. Trabajamos incansablemente para proteger los derechos de los padres y, sobre todo, el bienestar de los menores. Manejamos casos de custodia compartida, custodia exclusiva, régimen de visitas y modificaciones de acuerdos existentes.',
+      icon: 'custom',
+      title: 'Lavado en Seco',
+      slug: 'lavado-seco',
+      shortDescription: 'Cuidado especializado para trajes, vestidos florales y telas delicadas.',
+      fullDescription: 'Para aquellas prendas que no pueden tocar el agua, ofrecemos un servicio de limpieza en seco seguro y efectivo. Eliminamos manchas profundas y olores sin dañar las fibras más delicadas de tus trajes, vestidos de noche y abrigos.',
     },
     {
-      icon: 'alimony',
-      title: 'Pensión Alimenticia',
-      slug: 'pension',
-      shortDescription: 'Lograr la independencia financiera tras un proceso legal. Determinamos el monto justo de pensión.',
-      fullDescription: 'La pensión alimenticia es un derecho fundamental para asegurar el bienestar de los hijos y, en algunos casos, del cónyuge. Nuestro equipo evalúa cuidadosamente la situación financiera de ambas partes para establecer montos justos y sostenibles. También manejamos casos de incumplimiento y solicitudes de modificación.',
+      icon: 'custom',
+      title: 'Edredones y Ropa de Cama',
+      slug: 'edredones',
+      shortDescription: 'Limpieza profunda para piezas grandes que no caben en casa.',
+      fullDescription: 'Lavamos e higienizamos tus edredones, mantas, sábanas y cortinas utilizando lavadoras de gran capacidad. Eliminamos ácaros y alérgenos para que disfrutes de un descanso verdaderamente reparador.',
     },
     {
-      icon: 'mediation',
-      title: 'Mediación Familiar',
-      slug: 'mediacion',
-      shortDescription: 'Un enfoque personal para resolver conflictos. La mediación ayuda a encontrar soluciones sin ir a juicio.',
-      fullDescription: 'La mediación es una alternativa eficiente y menos conflictiva para resolver disputas familiares. Como mediadores certificados, facilitamos el diálogo entre las partes para alcanzar acuerdos satisfactorios. Este enfoque es especialmente valioso cuando hay hijos involucrados, ya que preserva la relación de co-parentalidad.',
+      icon: 'custom',
+      title: 'Desmanchado Especial',
+      slug: 'desmanchado',
+      shortDescription: 'Tratamiento localizado para salvar tus prendas favoritas.',
+      fullDescription: '¿Manchas de vino, café o aceite? Nuestros expertos evalúan cada mancha y aplican tratamientos específicos para removerlas sin afectar el color original ni la textura de tu ropa.',
     },
     {
-      icon: 'domestic-violence',
-      title: 'Violencia Doméstica',
-      slug: 'violencia',
-      shortDescription: 'Se debe considerar la seguridad ante todo. Estamos aquí para proteger sus derechos y su bienestar.',
-      fullDescription: 'La seguridad de nuestros clientes es nuestra prioridad absoluta. Brindamos asistencia legal urgente para obtener medidas de protección, órdenes de restricción y acompañamiento legal integral. Trabajamos en coordinación con organizaciones de apoyo para asegurar que cada persona reciba la protección que necesita.',
+      icon: 'custom',
+      title: 'Entrega a Domicilio',
+      slug: 'domicilio',
+      shortDescription: 'Recogemos y entregamos tu ropa en la puerta de tu casa u oficina.',
+      fullDescription: 'Ahorra tiempo y esfuerzo. Programa la recolección de tu ropa sucia a través de WhatsApp o nuestra web, y nosotros nos encargamos del resto. Te devolvemos tu ropa limpia, fresca y empacada directamente en tu puerta.',
     },
   ],
 
   tabs: [
     {
-      title: 'Derecho Colaborativo',
-      content: '¿Pueden usted y su cónyuge considerar su problema de derecho de familia como un "problema por resolver" y no como una "competencia por ganar"? El derecho colaborativo es un proceso legal que permite a las parejas que han decidido separarse resolver sus diferencias fuera de los tribunales. Nuestro equipo facilita negociaciones respetuosas para alcanzar acuerdos que satisfagan las necesidades de ambas partes y sus hijos.',
+      title: 'Servicio Express',
+      content: '¿Necesitas tu ropa limpia con urgencia? Ofrecemos un servicio express con entrega en 24 horas para lavado por libra y planchado. Ideal para viajeros, imprevistos o simplemente cuando olvidaste lavar tu uniforme.',
     },
     {
-      title: 'Divorcio Absoluto',
-      content: 'Cuando la separación definitiva es la mejor opción, nuestro equipo la guía a través de cada etapa del proceso de divorcio en Nicaragua. Nos encargamos de la documentación legal, la distribución equitativa de bienes, los acuerdos de custodia y pensión, asegurando que sus derechos estén protegidos en todo momento. Nuestro enfoque es hacer este proceso lo más eficiente y menos doloroso posible.',
+      title: 'Cuidado Ecológico',
+      content: 'Nos preocupamos por el medio ambiente tanto como por tu ropa. Utilizamos detergentes biodegradables, optimizamos el uso de agua en nuestros ciclos de lavado y mantenemos programas de reciclaje de ganchos y plásticos.',
     },
     {
-      title: 'Litigio',
-      content: 'Para los casos que requieren la intervención judicial, contamos con amplia experiencia en litigio de derecho de familia ante los tribunales de Managua y toda Nicaragua. Nuestros abogados presentan casos sólidos y bien fundamentados, luchando firmemente por los derechos de nuestros clientes. Cuando la negociación no es posible, la preparación y experiencia en el tribunal hacen la diferencia.',
+      title: 'Planes Mensuales',
+      content: 'Para familias u oficinas con alto volumen de lavado, ofrecemos planes mensuales con suscripción que incluyen recolección y entrega semanal a precios preferenciales. Olvídate de lavar por completo y disfruta de tu fin de semana.',
     },
   ],
 
   team: [
     {
-      name: 'Irene González',
-      title: 'Abogada Principal y Fundadora',
-      bio: 'Especialista en derecho de familia con más de 9 años de experiencia. Licda. González es reconocida por su enfoque compasivo y su dedicación a proteger los derechos de las familias nicaragüenses. Egresada de la Universidad Centroamericana (UCA) con maestría en Derecho de Familia.',
-      specialties: ['Derecho de Familia', 'Mediación', 'Derecho Colaborativo'],
+      name: 'Carlos Mario',
+      title: 'Gerente General y Especialista Textil',
+      bio: 'Fundador de la lavandería, supervisa los estándares de calidad en todos los procesos de limpieza y planchado.',
+      specialties: ['Lavado en Seco', 'Desmanchado', 'Control de Calidad'],
     },
     {
-      name: 'Roberto Martínez',
-      title: 'Abogado Asociado',
-      bio: 'Con 6 años de experiencia en litigio familiar, el Lic. Martínez se especializa en casos de custodia y pensión alimenticia. Su enfoque metódico y su compromiso con cada caso han resultado en numerosos resultados favorables para nuestros clientes.',
-      specialties: ['Custodia de Menores', 'Pensión Alimenticia', 'Litigio'],
+      name: 'Ana Pérez',
+      title: 'Jefa de Operaciones',
+      bio: 'Coordina la logística de recolección y entrega, asegurando que tu ropa llegue a tiempo, siempre.',
+      specialties: ['Atención al Cliente', 'Logística', 'Servicio Express'],
     },
     {
-      name: 'Carolina Espinoza',
-      title: 'Abogada Asociada',
-      bio: 'Especialista en mediación y resolución alternativa de conflictos. La Licda. Espinoza aporta un enfoque único que prioriza el diálogo y la cooperación, logrando acuerdos duraderos que benefician a todas las partes involucradas.',
-      specialties: ['Mediación Familiar', 'Violencia Doméstica', 'Derecho Colaborativo'],
+      name: 'Mario Ruiz',
+      title: 'Especialista en Planchado',
+      bio: 'Con manos mágicas para las arrugas, Mario asegura que cada camisa y pantalón quede con un acabado profesional de tintorería.',
+      specialties: ['Planchado Industrial', 'Trato de Telas Delicadas'],
     },
   ],
 
   testimonials: [
     {
       name: 'María L.',
-      quote: 'La Licda. González fue la opción perfecta para asesorarme legalmente durante mi divorcio. Escuchó mis preocupaciones, me brindó una opinión honesta y el mejor escenario posible. La recomiendo ampliamente.',
+      quote: 'Excelente servicio. Solicitamos el servicio a domicilio y en 48 horas teníamos toda nuestra ropa limpia, con un olor riquísimo y perfectamente doblada. Recomendado al 100%.',
       rating: 5,
-      caseType: 'Divorcio',
+      caseType: 'Lavado por Libra',
     },
     {
       name: 'Carlos R.',
-      quote: 'Profesionalismo y empatía en cada paso del proceso. El equipo de González & Asociados me ayudó a obtener la custodia compartida de mis hijos. Siempre estuvieron disponibles para responder mis dudas.',
+      quote: 'Mis camisas de trabajo siempre quedan impecables. Me ahorran horas de estar planchando los fines de semana.',
       rating: 5,
-      caseType: 'Custodia',
+      caseType: 'Planchado',
     },
     {
       name: 'Ana P.',
-      quote: 'Excelente atención y resultados. La mediación que facilitaron nos permitió llegar a un acuerdo justo sin necesidad de ir a juicio. Un equipo verdaderamente comprometido con el bienestar de la familia.',
+      quote: 'Lograron quitar una mancha de vino de mi vestido favorito que creí perdido. Son unos profesionales.',
       rating: 5,
-      caseType: 'Mediación',
+      caseType: 'Lavado en Seco',
     },
     {
       name: 'José M.',
-      quote: 'En un momento muy difícil, encontré en González & Asociados el apoyo legal y humano que necesitaba. Su experiencia en pensión alimenticia fue fundamental para proteger los derechos de mis hijos.',
+      quote: 'Los edredones quedaron como nuevos. El servicio al cliente por WhatsApp es muy rápido y amable.',
       rating: 5,
-      caseType: 'Pensión Alimenticia',
+      caseType: 'Edredones',
     },
     {
       name: 'Laura S.',
-      quote: 'Contraté a la Licda. González para un caso de violencia doméstica. Su rapidez para actuar y su conocimiento de la ley me dieron la protección que necesitaba. Eternamente agradecida.',
+      quote: 'Puntualidad total en la recolección y entrega. Es un alivio no tener que preocuparme por lavar ropa.',
       rating: 5,
-      caseType: 'Violencia Doméstica',
+      caseType: 'Domicilio',
     },
   ],
 
   booking: {
     enabled: true,
-    ctaText: 'Agendar Consulta Gratuita',
+    ctaText: 'Solicitar Recolección',
   },
 
   seo: {
-    siteTitle: 'González & Asociados | Derecho de Familia en Managua, Nicaragua',
-    titleTemplate: '%s | González & Asociados',
-    defaultDescription: 'Bufete de abogados especializado en derecho de familia en Managua, Nicaragua. Divorcio, custodia, pensión alimenticia, mediación. Consulta gratuita.',
+    siteTitle: 'Lavandería Carlos Mario | Lavado, Planchado y Domicilio',
+    titleTemplate: '%s | Lavandería Carlos Mario',
+    defaultDescription: 'Servicio profesional de lavandería, planchado y entrega a domicilio. Cuidamos tus prendas con calidad. Solicita recolección hoy.',
     locale: 'es_NI',
   },
 
   legal: {
-    privacyLastUpdated: '2026-01-15',
-    termsLastUpdated: '2026-01-15',
+    privacyLastUpdated: '2026-02-22',
+    termsLastUpdated: '2026-02-22',
   },
 }
