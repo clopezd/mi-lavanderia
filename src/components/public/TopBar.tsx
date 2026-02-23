@@ -1,8 +1,8 @@
 import { siteConfig } from '@/config/siteConfig'
-import { MailIcon, PhoneIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from './icons'
+import { MailIcon, WhatsAppIcon } from './icons'
 
 export function TopBar() {
-  const { contact, social } = siteConfig
+  const { contact } = siteConfig
 
   return (
     <div className="hidden md:block bg-cyan-800 text-white">
@@ -10,40 +10,22 @@ export function TopBar() {
         <div className="flex items-center justify-between h-10 text-body-sm">
           <div className="flex items-center gap-6">
             <span className="text-cyan-200 hidden lg:inline">
-              Servicio profesional de lavandería en {siteConfig.contact.city}, {siteConfig.contact.country}
+              Servicio profesional de lavandería en Heredia, Costa Rica
             </span>
             <a href={`mailto:${contact.email}`} className="flex items-center gap-1.5 hover:text-cyan-200 transition-colors">
               <MailIcon className="w-3.5 h-3.5" />
               {contact.email}
             </a>
-            <a href={`tel:${contact.phone}`} className="flex items-center gap-1.5 hover:text-cyan-200 transition-colors">
-              <PhoneIcon className="w-3.5 h-3.5" />
-              Llame al {contact.phoneDisplay}
-            </a>
           </div>
-          <div className="flex items-center gap-4">
-            {social.facebook && (
-              <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-cyan-200 transition-colors">
-                <FacebookIcon className="w-4 h-4" />
-              </a>
-            )}
-            {social.instagram && (
-              <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-cyan-200 transition-colors">
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-            )}
-            {social.linkedin && (
-              <a href={social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-cyan-200 transition-colors">
-                <LinkedInIcon className="w-4 h-4" />
-              </a>
-            )}
-            <a
-              href={`tel:${contact.phone}`}
-              className="ml-2 bg-cyan-500 hover:bg-cyan-400 text-white text-body-xs font-bold uppercase tracking-wider px-4 py-1 rounded transition-colors"
-            >
-              Llama Ahora
-            </a>
-          </div>
+          <a
+            href={`https://wa.me/${contact.whatsappNumber?.replace(/\D/g, '')}?text=Hola,%20quiero%20cotizar%20un%20servicio`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-green-600 hover:bg-green-500 text-white text-body-xs font-bold uppercase tracking-wider px-4 py-1 rounded transition-colors"
+          >
+            <WhatsAppIcon className="w-3.5 h-3.5" />
+            Cotizar por WhatsApp
+          </a>
         </div>
       </div>
     </div>

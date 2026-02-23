@@ -1,52 +1,54 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/siteConfig'
+import { WhatsAppIcon } from './icons'
 
 export function HeroSection() {
-  const { hero } = siteConfig
+  const { hero, contact } = siteConfig
+  const waUrl = `https://wa.me/${contact.whatsappNumber?.replace(/\D/g, '')}?text=Hola,%20quiero%20solicitar%20una%20recolección`
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f0f1f5] to-[#dcdde3]">
-        {/* Decorative pattern overlay - lighter for light bg */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-        {/* Decorative circles */}
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl mix-blend-multiply" />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl mix-blend-multiply" />
-      </div>
+    <section className="relative overflow-hidden bg-neu-bg">
+      {/* Soft ambient blobs */}
+      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-cyan-300/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
         <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
-            <span className="w-2 h-2 bg-cyan-400 rounded-full" />
-            <span className="text-body-sm text-cyan-100">
-              Servicio de lavandería profesional en {siteConfig.contact.city}, {siteConfig.contact.country}
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2 bg-cyan-50 border border-cyan-100 rounded-full px-4 py-1.5 mb-8">
+            <span className="w-2 h-2 bg-cyan-500 rounded-full" />
+            <span className="text-body-sm font-medium text-cyan-700">
+              Servicio profesional de lavandería en Heredia, Costa Rica
             </span>
           </div>
 
-          <h1 className="font-heading text-display-lg md:text-display-xl lg:text-display-2xl text-gray-800 mb-6 leading-tight">
+          {/* Headline — impactante */}
+          <h1 className="font-heading text-display-lg md:text-display-xl lg:text-display-2xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
             {hero.headline}
           </h1>
-          <p className="text-body-lg md:text-body-xl text-gray-600 mb-10 max-w-2xl leading-relaxed">
+
+          <p className="text-body-lg md:text-body-xl text-gray-500 mb-10 max-w-2xl leading-relaxed">
             {hero.subheadline}
           </p>
+
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href={hero.ctaHref}
-              className="inline-flex items-center justify-center bg-neu-bg text-cyan-600 font-bold text-body-md px-8 py-4 rounded-xl shadow-neu hover:shadow-neu-inset active:shadow-neu-inset transition-shadow duration-200 uppercase tracking-wider"
-            >
-              {hero.ctaText}
-            </Link>
             <a
-              href={`tel:${siteConfig.contact.phone}`}
-              className="inline-flex items-center justify-center bg-neu-bg text-cyan-700 font-semibold text-body-md px-8 py-4 rounded-xl shadow-neu hover:shadow-neu-inset active:shadow-neu-inset transition-shadow duration-200"
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-body-md px-8 py-4 rounded-2xl transition-colors shadow-lg shadow-green-200 uppercase tracking-wide"
             >
-              Llame al {siteConfig.contact.phoneDisplay}
+              <WhatsAppIcon className="w-5 h-5" />
+              Cotizar por WhatsApp
             </a>
+            <Link
+              href="/servicios"
+              className="inline-flex items-center justify-center bg-neu-bg text-cyan-700 font-semibold text-body-md px-8 py-4 rounded-2xl shadow-neu hover:shadow-neu-inset active:shadow-neu-inset transition-shadow duration-200"
+            >
+              Ver Servicios
+            </Link>
           </div>
         </div>
       </div>

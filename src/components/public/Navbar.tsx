@@ -1,16 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { siteConfig } from '@/config/siteConfig'
-import { ScaleIcon, ChevronDownIcon, MenuIcon } from './icons'
+import { MenuIcon } from './icons'
 import { MobileMenu } from './MobileMenu'
+import { CcCleanLogo } from './CcCleanLogo'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -18,72 +17,23 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
   return (
     <>
       <nav className={`sticky top-0 z-50 bg-neu-bg transition-shadow duration-300 ${scrolled ? 'shadow-neu' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <ScaleIcon className="w-8 h-8 text-cyan-600 group-hover:text-cyan-700 transition-colors" />
-              <div>
-                <span className="font-heading text-xl font-bold text-cyan-800 tracking-tight">
-                  {siteConfig.firmName.split(' ')[0]}
-                </span>
-                <span className="font-heading text-xl font-light text-gray-500 tracking-tight ml-1">
-                  {siteConfig.firmName.split(' ').slice(1).join(' ')}
-                </span>
-              </div>
-            </Link>
+            <CcCleanLogo />
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
+            <div className="hidden lg:flex items-center gap-1">
               {siteConfig.navigation.items.map((item) => (
-                <div key={item.label} className="relative">
-                  {item.children ? (
-                    <>
-                      <button
-                        onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                        className={`flex items-center gap-1 px-4 py-2 text-body-sm font-medium uppercase tracking-wider transition-colors ${openDropdown === item.label ? 'text-cyan-600' : 'text-gray-700 hover:text-cyan-600'
-                          }`}
-                      >
-                        {item.label}
-                        <ChevronDownIcon className={`w-4 h-4 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
-                      </button>
-                      {openDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-2 w-56 bg-neu-bg rounded-xl shadow-neu border border-transparent py-2 animate-fade-in">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              className="block px-4 py-2.5 text-body-sm text-gray-700 hover:text-cyan-600 transition-colors"
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className="px-4 py-2 text-body-sm font-medium uppercase tracking-wider text-gray-700 hover:text-cyan-600 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="px-4 py-2 text-body-sm font-medium uppercase tracking-wider text-gray-700 hover:text-cyan-600 transition-colors"
+                >
+                  {item.label}
+                </Link>
               ))}
               <Link
                 href="/admin/dashboard"

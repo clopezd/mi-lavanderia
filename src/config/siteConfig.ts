@@ -141,10 +141,7 @@ export const siteConfig: SiteConfig = {
     officeHours: 'Lunes a Sábado, 8:00 a.m. a 6:00 p.m.',
   },
 
-  social: {
-    facebook: 'https://facebook.com/cccleanexpress',
-    instagram: 'https://instagram.com/cccleanexpress',
-  },
+  social: {},
 
   navigation: {
     items: [
