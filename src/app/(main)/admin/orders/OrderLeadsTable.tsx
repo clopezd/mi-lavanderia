@@ -115,7 +115,7 @@ export function OrderLeadsTable({ initialLeads }: Props) {
       {/* Rows */}
       <div className="divide-y divide-white/[0.05]">
         {leads.map(lead => {
-          const config = STATUS_CONFIG[lead.status]
+          const config = STATUS_CONFIG[lead.status] ?? STATUS_CONFIG['Pendiente']
           const next = nextStatus(lead.status)
           const isUpdating = updating === lead.id
 
