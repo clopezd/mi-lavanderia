@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 
-type LeadStatus = 'pending' | 'processing' | 'completed'
+type LeadStatus = 'Pendiente' | 'Recogido' | 'Lavado' | 'Listo' | 'Entregado'
 
 interface OrderLead {
   id: string
@@ -18,28 +18,34 @@ interface Props {
   initialLeads: OrderLead[]
 }
 
-const STATUS_CONFIG: Record<LeadStatus, { label: string; next: LeadStatus; nextLabel: string; badgeStyle: string; btnStyle: string }> = {
-  pending: {
-    label: 'Pendiente',
-    next: 'processing',
-    nextLabel: 'Marcar En proceso',
+const STATUS_ORDER: LeadStatus[] = ['Pendiente', 'Recogido', 'Lavado', 'Listo', 'Entregado']
+
+const STATUS_CONFIG: Record<LeadStatus, { badgeStyle: string; btnStyle: string }> = {
+  Pendiente: {
     badgeStyle: 'bg-amber-400/20 text-amber-300 border border-amber-400/30',
     btnStyle: 'text-amber-300 hover:bg-amber-400/10 border-amber-400/30',
   },
-  processing: {
-    label: 'En proceso',
-    next: 'completed',
-    nextLabel: 'Marcar Completado',
+  Recogido: {
     badgeStyle: 'bg-blue-400/20 text-blue-300 border border-blue-400/30',
     btnStyle: 'text-blue-300 hover:bg-blue-400/10 border-blue-400/30',
   },
-  completed: {
-    label: 'Completado',
-    next: 'completed',
-    nextLabel: '—',
+  Lavado: {
+    badgeStyle: 'bg-violet-400/20 text-violet-300 border border-violet-400/30',
+    btnStyle: 'text-violet-300 hover:bg-violet-400/10 border-violet-400/30',
+  },
+  Listo: {
+    badgeStyle: 'bg-cyan-400/20 text-cyan-300 border border-cyan-400/30',
+    btnStyle: 'text-cyan-300 hover:bg-cyan-400/10 border-cyan-400/30',
+  },
+  Entregado: {
     badgeStyle: 'bg-emerald-400/20 text-emerald-300 border border-emerald-400/30',
     btnStyle: 'text-white/20 border-white/10 cursor-default',
   },
+}
+
+function nextStatus(current: LeadStatus): LeadStatus | null {
+  const idx = STATUS_ORDER.indexOf(current)
+  return idx < STATUS_ORDER.length - 1 ? STATUS_ORDER[idx + 1] : null
 }
 
 function formatDate(iso: string): string {
@@ -57,19 +63,19 @@ export function OrderLeadsTable({ initialLeads }: Props) {
   const [updating, setUpdating] = useState<string | null>(null)
 
   async function handleAdvanceStatus(lead: OrderLead) {
-    const config = STATUS_CONFIG[lead.status]
-    if (lead.status === 'completed') return
+    const next = nextStatus(lead.status)
+    if (!next) return
 
     setUpdating(lead.id)
     const supabase = createClient()
     const { error } = await supabase
       .from('order_leads')
-      .update({ status: config.next })
+      .update({ status: next })
       .eq('id', lead.id)
 
     if (!error) {
       setLeads(prev =>
-        prev.map(l => l.id === lead.id ? { ...l, status: config.next } : l)
+        prev.map(l => l.id === lead.id ? { ...l, status: next } : l)
       )
     }
     setUpdating(null)
@@ -110,6 +116,7 @@ export function OrderLeadsTable({ initialLeads }: Props) {
       <div className="divide-y divide-white/[0.05]">
         {leads.map(lead => {
           const config = STATUS_CONFIG[lead.status]
+          const next = nextStatus(lead.status)
           const isUpdating = updating === lead.id
 
           return (
@@ -139,16 +146,16 @@ export function OrderLeadsTable({ initialLeads }: Props) {
 
               {/* Status badge */}
               <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold w-fit ${config.badgeStyle}`}>
-                {config.label}
+                {lead.status}
               </span>
 
               {/* Action */}
               <button
                 onClick={() => handleAdvanceStatus(lead)}
-                disabled={lead.status === 'completed' || isUpdating}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-200 whitespace-nowrap ${config.btnStyle} ${isUpdating ? 'opacity-50' : ''}`}
+                disabled={!next || isUpdating}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-200 whitespace-nowrap ${next ? config.btnStyle : 'text-white/20 border-white/10 cursor-default'} ${isUpdating ? 'opacity-50' : ''}`}
               >
-                {isUpdating ? '...' : config.nextLabel}
+                {isUpdating ? '...' : next ? `→ ${next}` : '—'}
               </button>
             </div>
           )

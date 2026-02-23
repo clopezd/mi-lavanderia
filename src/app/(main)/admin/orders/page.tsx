@@ -32,9 +32,9 @@ export default async function AdminOrderLeadsPage() {
   }
 
   const all = leads ?? []
-  const pending = all.filter(l => l.status === 'pending').length
-  const processing = all.filter(l => l.status === 'processing').length
-  const completed = all.filter(l => l.status === 'completed').length
+  const pendiente = all.filter(l => l.status === 'Pendiente').length
+  const enCurso = all.filter(l => ['Recogido', 'Lavado', 'Listo'].includes(l.status)).length
+  const entregado = all.filter(l => l.status === 'Entregado').length
 
   return (
     <div className="p-6 md:p-8 max-w-5xl mx-auto space-y-8 animate-fade-in">
@@ -50,9 +50,9 @@ export default async function AdminOrderLeadsPage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { label: 'Pendientes', value: pending, color: 'text-amber-300', border: 'border-amber-400/20' },
-          { label: 'En proceso', value: processing, color: 'text-blue-300', border: 'border-blue-400/20' },
-          { label: 'Completados', value: completed, color: 'text-emerald-300', border: 'border-emerald-400/20' },
+          { label: 'Pendientes', value: pendiente, color: 'text-amber-300', border: 'border-amber-400/20' },
+          { label: 'En curso', value: enCurso, color: 'text-blue-300', border: 'border-blue-400/20' },
+          { label: 'Entregados', value: entregado, color: 'text-emerald-300', border: 'border-emerald-400/20' },
         ].map(stat => (
           <div
             key={stat.label}
