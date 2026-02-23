@@ -14,7 +14,8 @@ export default function MainLayout({
         style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' }}
       >
         <Sidebar />
-        <main className="ml-64 min-h-screen">
+        {/* pt-14 reserva espacio para el botón hamburguesa en móvil */}
+        <main className="md:ml-64 min-h-screen pt-14 md:pt-0">
           {children}
         </main>
         <ChatWidget />

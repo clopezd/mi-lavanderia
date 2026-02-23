@@ -84,7 +84,7 @@ export function OrderLeadsTable({ initialLeads }: Props) {
   if (leads.length === 0) {
     return (
       <div
-        className="rounded-2xl p-16 text-center"
+        className="rounded-2xl p-12 text-center"
         style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
       >
         <div className="text-4xl mb-4">📭</div>
@@ -95,25 +95,9 @@ export function OrderLeadsTable({ initialLeads }: Props) {
   }
 
   return (
-    <div
-      className="rounded-2xl overflow-hidden"
-      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-    >
-      {/* Table header */}
-      <div
-        className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-3 text-[11px] uppercase tracking-wider text-white/35 font-semibold"
-        style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <span>Nombre</span>
-        <span>Servicio</span>
-        <span>Franja horaria</span>
-        <span>Recibido</span>
-        <span>Estado</span>
-        <span>Acción</span>
-      </div>
-
-      {/* Rows */}
-      <div className="divide-y divide-white/[0.05]">
+    <>
+      {/* ── MOBILE: Cards (< md) ── */}
+      <div className="md:hidden space-y-3">
         {leads.map(lead => {
           const config = STATUS_CONFIG[lead.status] ?? STATUS_CONFIG['Pendiente']
           const next = nextStatus(lead.status)
@@ -122,45 +106,113 @@ export function OrderLeadsTable({ initialLeads }: Props) {
           return (
             <div
               key={lead.id}
-              className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-4 items-center transition-colors duration-150"
-              style={{ background: 'rgba(255,255,255,0.02)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
+              className="rounded-2xl p-4 space-y-3"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
             >
-              {/* Nombre */}
-              <span className="text-white/80 font-medium truncate">
-                {lead.nombre ?? <span className="text-white/25 italic">—</span>}
-              </span>
-
-              {/* Servicio: cantidad de bolsas */}
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-white/90">{lead.bags_quantity}</span>
-                <span className="text-white/35 text-xs">bolsa{lead.bags_quantity !== 1 ? 's' : ''}</span>
+              {/* Top row: nombre + badge */}
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-white/90 font-semibold text-sm">
+                  {lead.nombre ?? <span className="text-white/35 italic font-normal">Sin nombre</span>}
+                </p>
+                <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold shrink-0 ${config.badgeStyle}`}>
+                  {lead.status}
+                </span>
               </div>
 
-              {/* Franja horaria: día de recogida */}
-              <span className="text-white/80 font-medium">{lead.pickup_day}</span>
+              {/* Details row */}
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-white/35 text-xs">Bolsas</span>
+                  <span className="text-white/90 font-bold">{lead.bags_quantity}</span>
+                </div>
+                <div className="w-px h-4 bg-white/10" />
+                <div className="flex items-center gap-1.5">
+                  <span className="text-white/35 text-xs">Día</span>
+                  <span className="text-white/80 font-medium">{lead.pickup_day}</span>
+                </div>
+                <div className="w-px h-4 bg-white/10" />
+                <span className="text-white/35 text-xs">{formatDate(lead.created_at)}</span>
+              </div>
 
-              {/* Date */}
-              <span className="text-white/40 text-sm">{formatDate(lead.created_at)}</span>
-
-              {/* Status badge */}
-              <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold w-fit ${config.badgeStyle}`}>
-                {lead.status}
-              </span>
-
-              {/* Action */}
+              {/* Action button — full width, finger-friendly */}
               <button
                 onClick={() => handleAdvanceStatus(lead)}
                 disabled={!next || isUpdating}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-200 whitespace-nowrap ${next ? config.btnStyle : 'text-white/20 border-white/10 cursor-default'} ${isUpdating ? 'opacity-50' : ''}`}
+                className={`w-full py-3 rounded-xl text-sm font-semibold border transition-all duration-200
+                  ${next ? config.btnStyle : 'text-white/20 border-white/10 cursor-default'}
+                  ${isUpdating ? 'opacity-50' : ''}`}
               >
-                {isUpdating ? '...' : next ? `→ ${next}` : '—'}
+                {isUpdating ? 'Actualizando...' : next ? `→ Marcar como ${next}` : 'Entregado ✓'}
               </button>
             </div>
           )
         })}
       </div>
-    </div>
+
+      {/* ── DESKTOP: Table (≥ md) ── */}
+      <div
+        className="hidden md:block rounded-2xl overflow-hidden"
+        style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+      >
+        {/* Header */}
+        <div
+          className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-3 text-[11px] uppercase tracking-wider text-white/35 font-semibold"
+          style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+        >
+          <span>Nombre</span>
+          <span>Servicio</span>
+          <span>Franja horaria</span>
+          <span>Recibido</span>
+          <span>Estado</span>
+          <span>Acción</span>
+        </div>
+
+        {/* Rows */}
+        <div className="divide-y divide-white/[0.05]">
+          {leads.map(lead => {
+            const config = STATUS_CONFIG[lead.status] ?? STATUS_CONFIG['Pendiente']
+            const next = nextStatus(lead.status)
+            const isUpdating = updating === lead.id
+
+            return (
+              <div
+                key={lead.id}
+                className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-4 items-center transition-colors duration-150"
+                style={{ background: 'rgba(255,255,255,0.02)' }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
+              >
+                <span className="text-white/80 font-medium truncate">
+                  {lead.nombre ?? <span className="text-white/25 italic">—</span>}
+                </span>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-white/90">{lead.bags_quantity}</span>
+                  <span className="text-white/35 text-xs">bolsa{lead.bags_quantity !== 1 ? 's' : ''}</span>
+                </div>
+
+                <span className="text-white/80 font-medium">{lead.pickup_day}</span>
+
+                <span className="text-white/40 text-sm">{formatDate(lead.created_at)}</span>
+
+                <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold w-fit ${config.badgeStyle}`}>
+                  {lead.status}
+                </span>
+
+                <button
+                  onClick={() => handleAdvanceStatus(lead)}
+                  disabled={!next || isUpdating}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-200 whitespace-nowrap
+                    ${next ? config.btnStyle : 'text-white/20 border-white/10 cursor-default'}
+                    ${isUpdating ? 'opacity-50' : ''}`}
+                >
+                  {isUpdating ? '...' : next ? `→ ${next}` : '—'}
+                </button>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </>
   )
 }

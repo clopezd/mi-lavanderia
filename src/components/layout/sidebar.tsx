@@ -36,6 +36,12 @@ export function Sidebar() {
   const [userName, setUserName] = useState<string>('')
   const [userId, setUserId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+
+  // Cierra el sidebar móvil al cambiar de ruta
+  useEffect(() => {
+    setIsMobileOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const fetchUserRole = async () => {
@@ -80,18 +86,38 @@ export function Sidebar() {
   const roleBadge = getRoleBadge(userRole)
 
   return (
+    <>
+      {/* Hamburger — móvil only */}
+      <button
+        aria-label="Abrir menú"
+        onClick={() => setIsMobileOpen(true)}
+        className="md:hidden fixed top-3 left-4 z-50 w-10 h-10 flex items-center justify-center rounded-xl text-white/80 active:scale-95 transition-transform"
+        style={{ background: 'rgba(15,12,41,0.85)', border: '1px solid rgba(255,255,255,0.12)' }}
+      >
+        <MenuIcon className="w-5 h-5" />
+      </button>
+
+      {/* Overlay — móvil only */}
+      {isMobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
     <aside
       data-tour="sidebar"
-      className="fixed left-0 top-0 bottom-0 w-64 text-white flex flex-col z-40"
+      className={`fixed left-0 top-0 bottom-0 w-64 text-white flex flex-col z-40 transition-transform duration-300
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       style={{
-        background: 'rgba(15, 12, 41, 0.80)',
+        background: 'rgba(15, 12, 41, 0.95)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         borderRight: '1px solid rgba(255, 255, 255, 0.08)',
       }}
     >
-      {/* Logo */}
-      <div className="p-6 border-b border-white/[0.07]">
+      {/* Logo + close (móvil) */}
+      <div className="p-6 border-b border-white/[0.07] flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-3">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -107,6 +133,14 @@ export function Sidebar() {
             <p className="text-[11px] text-white/40">Lavandería Express</p>
           </div>
         </Link>
+        <button
+          aria-label="Cerrar menú"
+          onClick={() => setIsMobileOpen(false)}
+          className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-white/50 hover:text-white/90 active:scale-95 transition-all"
+          style={{ background: 'rgba(255,255,255,0.07)' }}
+        >
+          <XIcon className="w-4 h-4" />
+        </button>
       </div>
 
       {/* User Info */}
@@ -217,6 +251,7 @@ export function Sidebar() {
         </button>
       </div>
     </aside>
+    </>
   )
 }
 
@@ -316,6 +351,22 @@ function WashIcon({ className }: { className?: string }) {
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h18v13a1 1 0 01-1 1H4a1 1 0 01-1-1V7z" />
       <circle cx="12" cy="14" r="4" strokeLinecap="round" strokeLinejoin="round" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 5h.01M8 5h.01" />
+    </svg>
+  )
+}
+
+function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  )
+}
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   )
 }

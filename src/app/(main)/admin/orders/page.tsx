@@ -48,7 +48,7 @@ export default async function AdminOrderLeadsPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
           { label: 'Pendientes', value: pendiente, color: 'text-amber-300', border: 'border-amber-400/20' },
           { label: 'En curso', value: enCurso, color: 'text-blue-300', border: 'border-blue-400/20' },
