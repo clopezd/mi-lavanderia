@@ -14,23 +14,7 @@ export function ContactSection() {
           subtitle="&iquest;Tiene alguna pregunta o desea programar una cita? Cont&aacute;ctenos."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-14">
-          {/* Map */}
-          <div className="rounded-3xl overflow-hidden shadow-neu bg-neu-bg p-2 h-[400px]">
-            <div className="w-full h-full rounded-2xl overflow-hidden border border-transparent shadow-neu-inset">
-              <iframe
-                src={contact.googleMapsEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`Ubicación de ${siteConfig.firmName}`}
-              />
-            </div>
-          </div>
-
+        <div className="max-w-3xl mx-auto mt-14">
           {/* Contact info cards */}
           <div className="space-y-6">
             <div className="bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300">

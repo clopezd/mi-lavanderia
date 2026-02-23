@@ -120,30 +120,30 @@ export interface SiteConfig {
 // ============================================================
 
 export const siteConfig: SiteConfig = {
-  firmName: 'Lavandería Carlos Mario',
+  firmName: 'C&C Clean Express',
   firmSlogan: 'Tu ropa impecable, siempre fresca',
   firmDescription: 'Servicio profesional de lavandería, planchado y entrega a domicilio. Cuidamos tus prendas con los mejores productos para garantizar limpieza y frescura.',
   founderName: 'Carlos Mario',
   founderTitle: 'Fundador y Gerente',
-  founderBio: 'Con más de 10 años de experiencia en el cuidado textil, Carlos Mario fundó esta lavandería con un objetivo claro: ofrecer un servicio de alta calidad que devuelva el tiempo libre a las personas. Su pasión por el detalle y la atención al cliente ha convertido a la Lavandería Carlos Mario en la opción preferida de la comunidad.',
+  founderBio: 'Con más de 10 años de experiencia en el cuidado textil, Carlos Mario fundó esta lavandería con un objetivo claro: ofrecer un servicio de alta calidad que devuelva el tiempo libre a las personas. Su pasión por el detalle y la atención al cliente ha convertido a C&C Clean Express en la opción preferida de la comunidad.',
   yearsExperience: 10,
   yearFounded: 2014,
 
   contact: {
-    phone: '+50588880000',
-    phoneDisplay: '+505 8888-0000',
-    email: 'contacto@lavanderiacarlosmario.com',
-    address: 'Del parque central 2 cuadras al norte',
-    city: 'Managua',
-    country: 'Nicaragua',
-    googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.5!2d-86.27!3d12.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzQ4LjAiTiA4NsKwMTYnMTIuMCJX!5e0!3m2!1ses!2sni!4v1700000000000',
-    whatsappNumber: '+50588880000',
+    phone: '+50660691570',
+    phoneDisplay: '+506 6069-1570',
+    email: 'cyccleanexpress@gmail.com',
+    address: 'Santa Lucia',
+    city: 'Barva, Heredia',
+    country: 'Costa Rica',
+    googleMapsEmbedUrl: '', // Servicio 100% ONLINE
+    whatsappNumber: '+50660691570',
     officeHours: 'Lunes a Sábado, 8:00 a.m. a 6:00 p.m.',
   },
 
   social: {
-    facebook: 'https://facebook.com/lavanderiacarlosmario',
-    instagram: 'https://instagram.com/lavanderiacarlosmario',
+    facebook: 'https://facebook.com/cccleanexpress',
+    instagram: 'https://instagram.com/cccleanexpress',
   },
 
   navigation: {
@@ -310,10 +310,10 @@ export const siteConfig: SiteConfig = {
   },
 
   seo: {
-    siteTitle: 'Lavandería Carlos Mario | Lavado, Planchado y Domicilio',
-    titleTemplate: '%s | Lavandería Carlos Mario',
+    siteTitle: 'C&C Clean Express | Lavado, Planchado y Domicilio',
+    titleTemplate: '%s | C&C Clean Express',
     defaultDescription: 'Servicio profesional de lavandería, planchado y entrega a domicilio. Cuidamos tus prendas con calidad. Solicita recolección hoy.',
-    locale: 'es_NI',
+    locale: 'es_CR',
   },
 
   legal: {
