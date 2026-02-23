@@ -8,6 +8,7 @@ type LeadStatus = 'pending' | 'processing' | 'completed'
 interface OrderLead {
   id: string
   created_at: string
+  nombre: string | null
   bags_quantity: number
   pickup_day: string
   status: LeadStatus
@@ -94,11 +95,12 @@ export function OrderLeadsTable({ initialLeads }: Props) {
     >
       {/* Table header */}
       <div
-        className="grid grid-cols-[1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-3 text-[11px] uppercase tracking-wider text-white/35 font-semibold"
+        className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-3 text-[11px] uppercase tracking-wider text-white/35 font-semibold"
         style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
       >
-        <span>Bolsas</span>
-        <span>Día</span>
+        <span>Nombre</span>
+        <span>Servicio</span>
+        <span>Franja horaria</span>
         <span>Recibido</span>
         <span>Estado</span>
         <span>Acción</span>
@@ -113,18 +115,23 @@ export function OrderLeadsTable({ initialLeads }: Props) {
           return (
             <div
               key={lead.id}
-              className="grid grid-cols-[1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-4 items-center transition-colors duration-150"
+              className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr_1fr_auto] gap-4 px-6 py-4 items-center transition-colors duration-150"
               style={{ background: 'rgba(255,255,255,0.02)' }}
               onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
             >
-              {/* Bags */}
+              {/* Nombre */}
+              <span className="text-white/80 font-medium truncate">
+                {lead.nombre ?? <span className="text-white/25 italic">—</span>}
+              </span>
+
+              {/* Servicio: cantidad de bolsas */}
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold text-white/90">{lead.bags_quantity}</span>
                 <span className="text-white/35 text-xs">bolsa{lead.bags_quantity !== 1 ? 's' : ''}</span>
               </div>
 
-              {/* Day */}
+              {/* Franja horaria: día de recogida */}
               <span className="text-white/80 font-medium">{lead.pickup_day}</span>
 
               {/* Date */}

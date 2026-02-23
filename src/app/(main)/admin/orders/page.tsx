@@ -20,10 +20,16 @@ export default async function AdminOrderLeadsPage() {
 
   if (profile?.role !== 'admin') redirect('/dashboard')
 
-  const { data: leads } = await supabase
+  // La policy RLS "admin_read_order_leads" permite SELECT solo a usuarios
+  // autenticados con role = 'admin'. Usamos el cliente normal (sesión del admin).
+  const { data: leads, error: leadsError } = await supabase
     .from('order_leads')
-    .select('id, created_at, bags_quantity, pickup_day, status')
+    .select('id, created_at, nombre, bags_quantity, pickup_day, status')
     .order('created_at', { ascending: false })
+
+  if (leadsError) {
+    console.error('[admin/orders] Error fetching order_leads:', leadsError)
+  }
 
   const all = leads ?? []
   const pending = all.filter(l => l.status === 'pending').length

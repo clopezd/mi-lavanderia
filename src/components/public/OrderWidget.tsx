@@ -7,18 +7,24 @@ import { WhatsAppIcon } from './icons'
 const DAYS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 const WA_NUMBER = '50660691570'
 
-function buildWaUrl(quantity: number, day: string): string {
+function buildWaUrl(quantity: number, day: string, nombre: string): string {
   const bags = quantity === 1 ? '1 bolsa' : `${quantity} bolsas`
-  const text = `Hola, necesito que recojan ${bags} el día ${day}.`
+  const greeting = nombre.trim() ? `Hola, soy ${nombre.trim()}. ` : 'Hola, '
+  const text = `${greeting}necesito que recojan ${bags} el día ${day}.`
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
 }
 
 export function OrderWidget() {
   const [quantity, setQuantity] = useState(1)
   const [day, setDay] = useState('Lunes')
+  const [nombre, setNombre] = useState('')
 
-  const waUrl = buildWaUrl(quantity, day)
-  const previewText = `"Hola, necesito que recojan ${quantity === 1 ? '1 bolsa' : `${quantity} bolsas`} el día ${day}."`
+  const waUrl = buildWaUrl(quantity, day, nombre)
+  const displayName = nombre.trim() || null
+  const bags = quantity === 1 ? '1 bolsa' : `${quantity} bolsas`
+  const previewText = displayName
+    ? `"Hola, soy ${displayName}. necesito que recojan ${bags} el día ${day}."`
+    : `"Hola, necesito que recojan ${bags} el día ${day}."`
 
   function handleOrder() {
     // 1. Abre WhatsApp de inmediato — dentro del gesto del usuario para evitar el bloqueador de popups.
@@ -30,7 +36,11 @@ export function OrderWidget() {
         const supabase = createClient()
         await supabase
           .from('order_leads')
-          .insert({ bags_quantity: quantity, pickup_day: day })
+          .insert({
+            bags_quantity: quantity,
+            pickup_day: day,
+            nombre: displayName,
+          })
       } catch {
         // Silencioso: el pedido ya fue enviado por WhatsApp
       }
@@ -54,6 +64,25 @@ export function OrderWidget() {
               <p className="text-body-sm text-gray-500 mt-2">
                 Elige cantidad y día. Un mensaje y listo.
               </p>
+            </div>
+
+            {/* Nombre */}
+            <div className="mb-6">
+              <label
+                htmlFor="order-nombre"
+                className="block text-body-xs font-semibold uppercase tracking-wider text-gray-400 mb-3"
+              >
+                Tu nombre <span className="normal-case text-gray-300">(opcional)</span>
+              </label>
+              <input
+                id="order-nombre"
+                type="text"
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}
+                placeholder="Ej. María López"
+                maxLength={80}
+                className="w-full bg-neu-bg rounded-2xl shadow-neu-inset px-5 py-4 text-body-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+              />
             </div>
 
             {/* Quantity selector */}
