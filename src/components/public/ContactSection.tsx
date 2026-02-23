@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/siteConfig'
 import { SectionHeading } from './SectionHeading'
-import { MapPinIcon, PhoneIcon, MailIcon, ClockIcon } from './icons'
+import { MapPinIcon, PhoneIcon, MailIcon, ClockIcon, WhatsAppIcon } from './icons'
 
 export function ContactSection() {
   const { contact } = siteConfig
@@ -17,33 +17,38 @@ export function ContactSection() {
         <div className="max-w-3xl mx-auto mt-14">
           {/* Contact info cards */}
           <div className="space-y-6">
-            <div className="bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300">
+            <a
+              href={`mailto:${contact.email}`}
+              className="block bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 bg-neu-bg shadow-neu-inset rounded-xl flex items-center justify-center shrink-0">
-                  <MapPinIcon className="w-7 h-7 text-cyan-600" />
+                  <MailIcon className="w-7 h-7 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-gray-900 mb-1">Ubicación de la Oficina</h3>
-                  <p className="text-body-sm text-foreground-secondary">{contact.address}</p>
-                  <p className="text-body-sm text-foreground-secondary">{contact.city}, {contact.country}</p>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-1">Correo Electrónico</h3>
+                  <p className="text-body-sm text-cyan-600 font-medium">{contact.email}</p>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div className="bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300">
+            <a
+              href={`https://wa.me/${contact.whatsappNumber?.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 bg-neu-bg shadow-neu-inset rounded-xl flex items-center justify-center shrink-0">
-                  <PhoneIcon className="w-7 h-7 text-cyan-600" />
+                  <WhatsAppIcon className="w-7 h-7 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-gray-900 mb-1">Datos de Contacto</h3>
-                  <p className="text-body-sm text-foreground-secondary">
-                    Llame al <a href={`tel:${contact.phone}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">{contact.phoneDisplay}</a> o envíe un correo a{' '}
-                    <a href={`mailto:${contact.email}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">{contact.email}</a>
-                  </p>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-1">WhatsApp</h3>
+                  <p className="text-body-sm text-green-600 font-medium">{contact.phoneDisplay}</p>
+                  <p className="text-body-sm text-foreground-secondary">Escríbenos, respondemos rápido</p>
                 </div>
               </div>
-            </div>
+            </a>
 
             <div className="bg-neu-bg rounded-2xl p-6 shadow-neu hover:shadow-neu-inset transition-shadow duration-300">
               <div className="flex items-start gap-4">
@@ -51,18 +56,20 @@ export function ContactSection() {
                   <ClockIcon className="w-7 h-7 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-gray-900 mb-1">Horario Comercial</h3>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-1">Horario</h3>
                   <p className="text-body-sm text-foreground-secondary">{contact.officeHours}</p>
                 </div>
               </div>
             </div>
 
-            <Link
-              href="/contacto"
-              className="block w-full text-center bg-neu-bg text-cyan-600 font-bold py-4 rounded-2xl transition-shadow text-body-md uppercase tracking-wider shadow-neu hover:shadow-neu-inset active:shadow-neu-inset mt-8"
+            <a
+              href={`https://wa.me/${contact.whatsappNumber?.replace(/\D/g, '')}?text=Hola,%20quiero%20solicitar%20una%20recolección`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-2xl transition-colors text-body-md uppercase tracking-wider mt-8"
             >
-              Enviar Mensaje
-            </Link>
+              Solicitar Recolección por WhatsApp
+            </a>
           </div>
         </div>
       </div>

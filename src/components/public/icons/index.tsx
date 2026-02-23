@@ -214,9 +214,46 @@ export function WhatsAppIcon({ className }: IconProps) {
   )
 }
 
+export function WashingMachineIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="2" />
+      <circle cx="12" cy="13" r="4" />
+      <path d="M6 6h.01M10 6h2" />
+    </svg>
+  )
+}
+
+export function IronIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 17h16l-3-6H4v6z" />
+      <path d="M17 11V7a2 2 0 00-2-2H9" />
+      <path d="M4 17v2" />
+      <path d="M9 17v2" />
+      <path d="M14 17v2" />
+      <path d="M19 17v2" />
+    </svg>
+  )
+}
+
+export function TruckDeliveryIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="3" width="15" height="13" rx="1" />
+      <path d="M16 8h4l3 5v4h-7V8z" />
+      <circle cx="5.5" cy="18.5" r="2.5" />
+      <circle cx="18.5" cy="18.5" r="2.5" />
+    </svg>
+  )
+}
+
 // Map service icon names to components
 export function ServiceIcon({ icon, className }: { icon: string; className?: string }) {
   switch (icon) {
+    case 'lavado': return <WashingMachineIcon className={className} />
+    case 'planchado': return <IronIcon className={className} />
+    case 'delivery': return <TruckDeliveryIcon className={className} />
     case 'divorce': return <DocumentIcon className={className} />
     case 'custody': return <HomeIcon className={className} />
     case 'alimony': return <DollarIcon className={className} />

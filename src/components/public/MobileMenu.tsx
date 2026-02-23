@@ -99,7 +99,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             Llama Ahora
           </a>
           <Link
-            href="/login"
+            href="/admin/dashboard"
             className="block w-full text-center border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-50 font-semibold py-3 rounded-lg transition-colors"
             onClick={onClose}
           >

@@ -3,7 +3,7 @@
 // ============================================================
 
 export interface ServiceItem {
-  icon: 'divorce' | 'custody' | 'alimony' | 'mediation' | 'domestic-violence' | 'separation' | 'contracts' | 'corporate' | 'real-estate' | 'criminal' | 'immigration' | 'labor' | 'custom'
+  icon: 'divorce' | 'custody' | 'alimony' | 'mediation' | 'domestic-violence' | 'separation' | 'contracts' | 'corporate' | 'real-estate' | 'criminal' | 'immigration' | 'labor' | 'custom' | 'lavado' | 'planchado' | 'delivery'
   title: string
   slug: string
   shortDescription: string
@@ -149,18 +149,7 @@ export const siteConfig: SiteConfig = {
   navigation: {
     items: [
       { label: 'Inicio', href: '/' },
-      {
-        label: 'Servicios',
-        href: '/servicios',
-        children: [
-          { label: 'Lavado por Libra', href: '/servicios#lavado-libra' },
-          { label: 'Planchado Profesional', href: '/servicios#planchado' },
-          { label: 'Lavado en Seco', href: '/servicios#lavado-seco' },
-          { label: 'Entrega a Domicilio', href: '/servicios#domicilio' },
-        ],
-      },
-      { label: 'Nuestro Equipo', href: '/equipo' },
-      { label: 'Por Qué Elegirnos', href: '/#enfoque' },
+      { label: 'Servicios', href: '/servicios' },
       { label: 'Contacto', href: '/contacto' },
     ],
   },
@@ -192,46 +181,25 @@ export const siteConfig: SiteConfig = {
 
   services: [
     {
-      icon: 'custom',
-      title: 'Lavado por Libra',
-      slug: 'lavado-libra',
-      shortDescription: 'Ideal para tu ropa del día a día. Lavado, secado y doblado profesional.',
-      fullDescription: 'Nuestro servicio de lavado por libra es perfecto para la ropa de uso diario. Clasificamos tus prendas por colores y tipo de tela, utilizamos detergentes de alta eficacia y suavizantes que dejan un aroma fresco y duradero. Te entregamos tu ropa perfectamente doblada y lista para guardar.',
+      icon: 'lavado',
+      title: 'Lavado (Por bolsa)',
+      slug: 'lavado-bolsa',
+      shortDescription: 'Higiene y frescura para tu ropa diaria.',
+      fullDescription: 'Clasificamos tus prendas, aplicamos los mejores detergentes y suavizantes, y te las devolvemos perfectamente dobladas y con un aroma fresco y duradero.',
     },
     {
-      icon: 'custom',
+      icon: 'planchado',
       title: 'Planchado Profesional',
       slug: 'planchado',
-      shortDescription: 'Tus camisas y pantalones impecables, sin una sola arruga.',
-      fullDescription: 'Devolvemos a tus prendas su aspecto original. Nuestro equipo utiliza equipos de planchado industrial y técnicas específicas para cada tipo de tela, garantizando que tus camisas, pantalones y trajes luzcan perfectos para cualquier ocasión.',
+      shortDescription: 'Acabado impecable para tus prendas especiales.',
+      fullDescription: 'Utilizamos equipos industriales y técnicas específicas para cada tipo de tela. Tus camisas, pantalones y trajes quedarán listos para cualquier ocasión, sin una sola arruga.',
     },
     {
-      icon: 'custom',
-      title: 'Lavado en Seco',
-      slug: 'lavado-seco',
-      shortDescription: 'Cuidado especializado para trajes, vestidos florales y telas delicadas.',
-      fullDescription: 'Para aquellas prendas que no pueden tocar el agua, ofrecemos un servicio de limpieza en seco seguro y efectivo. Eliminamos manchas profundas y olores sin dañar las fibras más delicadas de tus trajes, vestidos de noche y abrigos.',
-    },
-    {
-      icon: 'custom',
-      title: 'Edredones y Ropa de Cama',
-      slug: 'edredones',
-      shortDescription: 'Limpieza profunda para piezas grandes que no caben en casa.',
-      fullDescription: 'Lavamos e higienizamos tus edredones, mantas, sábanas y cortinas utilizando lavadoras de gran capacidad. Eliminamos ácaros y alérgenos para que disfrutes de un descanso verdaderamente reparador.',
-    },
-    {
-      icon: 'custom',
-      title: 'Desmanchado Especial',
-      slug: 'desmanchado',
-      shortDescription: 'Tratamiento localizado para salvar tus prendas favoritas.',
-      fullDescription: '¿Manchas de vino, café o aceite? Nuestros expertos evalúan cada mancha y aplican tratamientos específicos para removerlas sin afectar el color original ni la textura de tu ropa.',
-    },
-    {
-      icon: 'custom',
-      title: 'Entrega a Domicilio',
-      slug: 'domicilio',
-      shortDescription: 'Recogemos y entregamos tu ropa en la puerta de tu casa u oficina.',
-      fullDescription: 'Ahorra tiempo y esfuerzo. Programa la recolección de tu ropa sucia a través de WhatsApp o nuestra web, y nosotros nos encargamos del resto. Te devolvemos tu ropa limpia, fresca y empacada directamente en tu puerta.',
+      icon: 'delivery',
+      title: 'Delivery',
+      slug: 'delivery',
+      shortDescription: 'Recogemos y entregamos en la puerta de tu negocio.',
+      fullDescription: 'Coordina la recolección por WhatsApp y nosotros hacemos el resto. Recogemos tu ropa sucia y te la devolvemos limpia, fresca y empacada directamente en tu puerta.',
     },
   ],
 

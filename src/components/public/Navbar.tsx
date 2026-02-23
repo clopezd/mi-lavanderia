@@ -86,7 +86,7 @@ export function Navbar() {
                 </div>
               ))}
               <Link
-                href="/login"
+                href="/admin/dashboard"
                 className="ml-4 px-6 py-2.5 bg-neu-bg text-cyan-600 font-semibold rounded-xl shadow-neu hover:shadow-neu-inset active:shadow-neu-inset transition-shadow duration-200"
               >
                 Portal Administrador
