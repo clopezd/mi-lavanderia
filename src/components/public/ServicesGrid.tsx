@@ -4,16 +4,16 @@ import { SectionHeading } from './SectionHeading'
 
 const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
   lavado: {
-    src: 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=600&h=400&fit=crop&q=80',
-    alt: 'Ropa limpia y fresca saliendo de la lavadora',
+    src: 'https://images.unsplash.com/photo-vkpVPcIBU5U?w=800&h=500&fit=crop&q=85&auto=format',
+    alt: 'Lavadora de carga frontal blanca en entorno minimalista',
   },
   planchado: {
-    src: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&h=400&fit=crop&q=80',
-    alt: 'Camisa perfectamente planchada y lista para usar',
+    src: 'https://images.unsplash.com/photo-vDGpcotaJzE?w=800&h=500&fit=crop&q=85&auto=format',
+    alt: 'Pila de toallas blancas perfectamente dobladas',
   },
   delivery: {
-    src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80',
-    alt: 'Entrega a domicilio rápida y puntual',
+    src: 'https://images.unsplash.com/photo-loLfi6a_c9o?w=800&h=500&fit=crop&q=85&auto=format',
+    alt: 'Bolsa de papel kraft minimalista sobre fondo neutro',
   },
 }
 
