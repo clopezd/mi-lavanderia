@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { createClient } from '@/lib/supabase/client'
 import { WhatsAppIcon } from './icons'
 
 const DAYS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
@@ -18,6 +19,23 @@ export function OrderWidget() {
 
   const waUrl = buildWaUrl(quantity, day)
   const previewText = `"Hola, necesito que recojan ${quantity === 1 ? '1 bolsa' : `${quantity} bolsas`} el día ${day}."`
+
+  function handleOrder() {
+    // 1. Abre WhatsApp de inmediato — dentro del gesto del usuario para evitar el bloqueador de popups.
+    window.open(waUrl, '_blank', 'noopener,noreferrer')
+
+    // 2. Registra el intento en Supabase en segundo plano. No bloquea el flujo.
+    void (async () => {
+      try {
+        const supabase = createClient()
+        await supabase
+          .from('order_leads')
+          .insert({ bags_quantity: quantity, pickup_day: day })
+      } catch {
+        // Silencioso: el pedido ya fue enviado por WhatsApp
+      }
+    })()
+  }
 
   return (
     <section id="pedir" className="py-20 lg:py-28 bg-neu-bg">
@@ -87,15 +105,13 @@ export function OrderWidget() {
             </div>
 
             {/* WhatsApp CTA */}
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 rounded-2xl transition-colors text-body-md uppercase tracking-wide shadow-lg shadow-green-200"
+            <button
+              onClick={handleOrder}
+              className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold py-5 rounded-2xl transition-colors text-body-md uppercase tracking-wide shadow-lg shadow-green-200"
             >
               <WhatsAppIcon className="w-6 h-6" />
               Pedir por WhatsApp
-            </a>
+            </button>
 
             {/* Message preview */}
             <p className="text-center text-body-xs text-gray-400 mt-4 leading-relaxed">
