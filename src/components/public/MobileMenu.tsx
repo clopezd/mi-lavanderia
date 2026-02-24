@@ -71,7 +71,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             Cotizar por WhatsApp
           </a>
           <Link
-            href="/admin/dashboard"
+            href="https://saas-factory-setup.vercel.app/admin/orders"
             className="block w-full text-center bg-neu-bg text-cyan-600 font-semibold py-3 rounded-xl shadow-neu hover:shadow-neu-inset transition-shadow"
             onClick={onClose}
           >
