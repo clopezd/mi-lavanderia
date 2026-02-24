@@ -7,8 +7,8 @@ import { ContactSection } from '@/components/public/ContactSection'
 export default function HomePage() {
   return (
     <PublicPageWrapper>
-      <HeroSection />
       <OrderWidget />
+      <HeroSection />
       <ServicesGrid />
       <ContactSection />
     </PublicPageWrapper>
