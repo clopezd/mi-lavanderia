@@ -146,8 +146,6 @@ export const siteConfig: SiteConfig = {
   navigation: {
     items: [
       { label: 'Inicio', href: '/' },
-      { label: 'Servicios', href: '/servicios' },
-      { label: 'Contacto', href: '/contacto' },
     ],
   },
 
