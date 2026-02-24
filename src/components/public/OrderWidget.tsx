@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { WhatsAppIcon } from './icons'
+import { siteConfig } from '@/config/siteConfig'
 
 const DAYS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 const WA_NUMBER = '50660691570'
@@ -48,9 +49,12 @@ export function OrderWidget() {
   }
 
   return (
-    <section id="pedir" className="py-20 lg:py-28 bg-neu-bg">
+    <section id="pedir" className="py-16 lg:py-24 bg-neu-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-lg mx-auto">
+          <h1 className="font-heading text-display-lg md:text-display-xl font-bold tracking-tight text-gray-900 text-center mb-10 leading-tight">
+            {siteConfig.hero.headline}
+          </h1>
           <div className="bg-neu-bg rounded-3xl shadow-neu-lg p-8 md:p-10">
 
             {/* Header */}
